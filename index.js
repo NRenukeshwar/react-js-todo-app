@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      todolist: [{ priority: "3", text: "Submit project" }],
+      todolist: [{ priority: "3", text: "Sample Task 3" },{ priority: "1", text: "Sample Task 1" }],
       text: "",
       priority: ""
     };
@@ -29,10 +29,16 @@ class App extends Component {
 
         todolist.push(todo);
         this.setState({
-          todolist: todolist
+          todolist: todolist,
+          text:"",
+          priority:""
         });
       } else {
         alert("Todo item already added");
+        this.setState({
+          text:"",
+          priority:""
+        });
       }
     }
   };
@@ -85,6 +91,7 @@ class App extends Component {
               id="text"
               name="text"
               placeholder="Enter Todo item text"
+              value={this.state.text}
               onChange={event => this.handleChange(event)}
               required
             />
@@ -94,6 +101,7 @@ class App extends Component {
               name="priority"
               className="form-control col-sm-2"
               onChange={event => this.handleChange(event)}
+              value={this.state.priority}
               required
             >
               <option value="">Select Priority</option>
